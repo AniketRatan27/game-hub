@@ -25,22 +25,28 @@ export interface Game {
   const useHooks = () => {    
       const [games, setGames] = useState<Game[]>([]);
         const [error, setError] = useState("");
+        const [isloding,setLoding]=useState(false)
       
       useEffect(() => {
           const contoller=new AbortController();
-
+          
+          setLoding(true);
           apiClient
             .get<FetchGamesResponse>("/games",{signal:contoller.signal})
-            .then((res) => setGames(res.data.results))
+            .then((res) => {
+              setGames(res.data.results)
+              setLoding(false);
+            })
             .catch((err) => {
                 if(err instanceof CanceledError) return;
                 setError(err.message)
+                setLoding(false);
             });
            
           return() => contoller.abort();  
         },[]);
 
-        return {games,error}
+        return {games,error ,isloding}
   }
   
   export default useHooks

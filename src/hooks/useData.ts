@@ -30,7 +30,7 @@ const useData=<T>(endpoint:string,requestConfig?:AxiosRequestConfig,deps?:any[])
         });
        
       return() => contoller.abort();  
-    }, deps ? [...deps]:[]);
+    }, deps ? [...deps]: []);
 
     return {data,error ,isloding}
 }

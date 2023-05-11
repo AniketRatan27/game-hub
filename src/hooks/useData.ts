@@ -8,7 +8,7 @@ interface FetchResponse<T>{
     results:T[];
 }
 
-const useData=<T>(endpoint:string,requestConfig?:AxiosRequestConfig,deps?:any[])=>{
+const useData=<T>(endpoint:string,requestConfig?:AxiosRequestConfig , deps?:any[])=>{
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [isloding,setLoding]=useState(false)

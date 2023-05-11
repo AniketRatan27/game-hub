@@ -17,10 +17,11 @@ export interface Game {
   
 
    
-  const useHooks = (selectedGenre:Genre | null) =>
-   useData<Game>("/games",{params:{geners:selectedGenre?.id}},[
-    selectedGenre?.id,
-]);
+  const useHooks = (selectedGenre:Genre | null , selectedPlatform:Platform|null) =>
+   useData<Game>("/games",{params:
+    {geners:selectedGenre?.id , platforms:selectedPlatform?.id
+    }},
+    [selectedGenre?.id, selectedPlatform?.id]);
   
   export default useHooks
 

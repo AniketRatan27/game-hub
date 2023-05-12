@@ -8,6 +8,6 @@ export interface Genre{
 
 
 
-const useGenres=()=>({data:genres,isLoading:false,error:null})
+const useGenres=()=>({data:genres,isloding:false,error:null})
 
 export default useGenres;

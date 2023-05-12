@@ -19,7 +19,10 @@ export interface Game {
    
   const useHooks = (gameQuery:GameQuery) =>
    useData<Game>("/games",{params:
-    {geners:gameQuery.genre?.id , platforms:gameQuery.platform?.id,ordering:gameQuery.sortOrder
+    {geners:gameQuery.genre?.id ,
+      platforms:gameQuery.platform?.id,
+      ordering:gameQuery.sortOrder,
+      search:gameQuery.searchText
     }},
     [gameQuery]);
   
